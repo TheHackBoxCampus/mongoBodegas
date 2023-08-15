@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer"
 import  { IsDefined } from "class-validator"
 
-class usuarios {
+class Usuarios {
      @Expose({name: "nombre"})
      @IsDefined({ message: () => { throw "Parametro nombre requerido" }})
      nm: string 
@@ -26,7 +26,7 @@ class usuarios {
      @IsDefined({ message: () => { throw "Parametro update_by requerido" }})
      urb: number 
 
-     constructor(user:Partial<usuarios>) {
+     constructor(user:Partial<Usuarios>) {
         Object.assign(this, user); 
         this.nm = "nombre"
         this.em = "example@gmail.com"   
@@ -37,3 +37,5 @@ class usuarios {
         
      }
 }
+
+export default Usuarios;
