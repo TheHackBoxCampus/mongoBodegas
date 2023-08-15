@@ -17,16 +17,16 @@ class Bodegas {
      @IsDefined({ message: () => { throw "Parametro estado requerido" }})
      e: number 
 
-     @Expose({name: "create_by"})
-     @IsDefined({ message: () => { throw "Parametro create_by requerido" }})
+     @Expose({name: "created_by"})
+     @IsDefined({ message: () => { throw "Parametro created_by requerido" }})
      crtb: number 
 
      @Expose({name: "update_by"})
      @IsDefined({ message: () => { throw "Parametro update_by requerido" }})
      urb: number 
 
-     @Expose({name: "create_at"})
-     @IsDefined({ message: () => { throw "Parametro create_at requerido" }})
+     @Expose({name: "created_at"})
+     @IsDefined({ message: () => { throw "Parametro created_at requerido" }})
      crat: Date
 
      @Expose({name: "update_at"})
