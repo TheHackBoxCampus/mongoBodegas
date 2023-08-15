@@ -1,9 +1,12 @@
-import { Expose } from "class-transformer"
+import { Expose, Transform } from "class-transformer"
 import  { IsDefined } from "class-validator"
 
 class Bodegas {
      @Expose({name: "nombre"})
-     @IsDefined({ message: () => { throw "Parametro nombre requerido" }})
+     @Transform(({value}) => {
+      return value
+     }, {toClassOnly: true})
+       @IsDefined({ message: () => { throw "Parametro nombre requerido" }})
      nm: string 
     
      @Expose({name: "id_responsable"})
@@ -31,7 +34,7 @@ class Bodegas {
      urat: Date
 
      @Expose({name: "deleted_at"})
-     @IsDefined({ message: () => { throw "Parametro update_at requerido" }})
+     @IsDefined({ message: () => { throw "Parametro deleted_at requerido" }})
      drat: Date
 
      constructor(user:Partial<Bodegas>) {
