@@ -10,15 +10,7 @@ const bodegasMD = async (req, res, next) => {
         req.data = JSON.parse(JSON.stringify(data)); 
         return next()
     }catch(err)  {  
-        if (error.name === "MongoError" && error.code === 121) {
-            // El código 121 generalmente se refiere a errores de validación en MongoDB
-            const validationErrors = error.errmsg.match(/: (.+)/)[1];
-            // Aquí `validationErrors` contendrá el mensaje de error de validación
-            console.error("Error de validación:", validationErrors);
-        
-            // Luego puedes enviar `validationErrors` como respuesta en tu API
-            res.status(400).json({ error: validationErrors });
-        }else res.status(500).send({status: 500, message: err})
+        res.status(500).send({status: 500, message: err})
     }   
 }
 
