@@ -386,3 +386,24 @@ db.bodegas.insertOne({
         update_at:new Date(2023,17,3),
         deleted_at:new Date(2023,18,3)
 });
+use("bodegas");
+
+db.bodegas.insertOne({
+    _id: 2, 
+    nombre:"almacenDos",
+    id_responsable:1,
+    estado: 1,
+    created_by:1,
+    update_by:1,
+    created_at:new Date(2023,16,3),
+    update_at:new Date(2023,17,3),
+    deleted_at:new Date(2023,18,3)
+});
+
+
+// consultas
+
+// listar todas las bodegas ordenadas alfabéticamente.
+use("bodegas");
+db.bodegas.find().sort({nombre: 1});
+
