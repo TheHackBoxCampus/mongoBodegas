@@ -43,18 +43,18 @@ class Bodegas {
   urb: number
 
   @Expose({ name: "created_at" })
-  @Transform(({ value }) => { return validateDate(value) }, { toClassOnly: true })
   @IsDefined({ message: () => { throw "Parametro created_at requerido" } })
+  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
   crat: Date
 
   @Expose({ name: "update_at" })
-  @Transform(({ value }) => { return validateDate(value) }, { toClassOnly: true })
   @IsDefined({ message: () => { throw "Parametro update_at requerido" } })
+  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
   urat: Date
 
   @Expose({ name: "deleted_at" })
-  @Transform(({ value }) => { return validateDate(value) }, { toClassOnly: true })
   @IsDefined({ message: () => { throw "Parametro deleted_at requerido" } })
+  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
   drat: Date
 
   constructor(user: Partial<Bodegas>) {
