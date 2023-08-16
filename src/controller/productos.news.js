@@ -13,8 +13,6 @@ const generateDate = () => {
     return formatDate;
 }
 
-console.log(generateDate())
-
 const verifyPatterns = async (req, res) => {
     const { id_bodega, id_producto, cantidad } = req.body;
 
