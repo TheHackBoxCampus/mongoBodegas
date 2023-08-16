@@ -7,8 +7,8 @@ const bodegasMD = async (req, res, next) => {
     try {
         if (Object.entries(req.body).length < 1) throw 'Parametros requeridos'
         else {
-            await validate(Bodegas, req.body);
             let data = plainToClass(Bodegas, req.body, {excludeExtraneousValues: true})
+            await validate(data);
             req.data = JSON.parse(JSON.stringify(data)); 
             return next()
         }
