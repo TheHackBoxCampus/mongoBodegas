@@ -59,20 +59,20 @@ const warehousesPush = async (req, res) => {
     } catch (err) {
         let errors = (err, p, q) => {
             let o = {
-                121: { status: 500, message: `Lo sentimos, ocurrió un error. Detalles: ${q} en el campo ${p}. Por favor, intenta de nuevo más tarde.` }
+                121: { status: 500, message: `Lo sentimos, ocurrió un error. Detalles: ${q}. Por favor, intenta de nuevo más tarde.`, fields: p}
             }   
 
             let v = o[err]; 
             return v 
         }
 
-        let p = '';
+        let p = [];
         let p2 = ''
 
         for(let rule of err.errInfo.details.schemaRulesNotSatisfied) {
             for(let prop of rule.propertiesNotSatisfied){
-                p += prop.propertyName                
-                p2 += prop.details[0].reason
+                p.push(prop.propertyName)
+                p2 = prop.details[0].reason
             }
         }
 
