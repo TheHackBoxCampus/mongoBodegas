@@ -1,23 +1,6 @@
 import { Expose, Transform } from "class-transformer"
 import { IsDefined } from "class-validator"
 
-const validateDate = (date: string) => {
-  const regex = /^\d{4}-\d{2}-\d{2}$/;
-
-  if (!regex.test(date)) throw 'El formato el cual estas empleando es incorrecto, Revisa los campos de tipo fecha'
-
-  const [year, month, day] = date.split("-");
-  const fecha = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-
-  if (
-    fecha.getFullYear() === parseInt(year, 10) &&
-    fecha.getMonth() === parseInt(month, 10) - 1 &&
-    fecha.getDate() === parseInt(day, 10)
-  ) {
-    return date;
-  } else throw 'Ingresaste una fecha incorrecta, Revisa los campos de tipo fecha' ;
-}
-
 class Bodegas {
   @Expose({ name: "nombre" })
   @Transform(({ value }) => {
@@ -44,17 +27,62 @@ class Bodegas {
 
   @Expose({ name: "created_at" })
   @IsDefined({ message: () => { throw "Parametro created_at requerido" } })
-  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
+  @Transform(({ value }) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(value)) throw 'El formato el cual estas empleando es incorrecto, Revisa los campos de tipo fecha'
+  
+    const [year, month, day] = value.split("-");
+    const fecha = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  
+    if (
+      fecha.getFullYear() === parseInt(year, 10) &&
+      fecha.getMonth() === parseInt(month, 10) - 1 &&
+      fecha.getDate() === parseInt(day, 10)
+    ) {
+      return value;
+    } else throw 'Ingresaste una fecha incorrecta, Revisa los campos de tipo fecha';
+
+  }, { toClassOnly: true })
   crat: Date
 
   @Expose({ name: "update_at" })
   @IsDefined({ message: () => { throw "Parametro update_at requerido" } })
-  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
+  @Transform(({ value }) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(value)) throw 'El formato el cual estas empleando es incorrecto, Revisa los campos de tipo fecha'
+  
+    const [year, month, day] = value.split("-");
+    const fecha = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  
+    if (
+      fecha.getFullYear() === parseInt(year, 10) &&
+      fecha.getMonth() === parseInt(month, 10) - 1 &&
+      fecha.getDate() === parseInt(day, 10)
+    ) {
+      return value;
+    } else throw 'Ingresaste una fecha incorrecta, Revisa los campos de tipo fecha';
+
+  }, { toClassOnly: true })
   urat: Date
 
   @Expose({ name: "deleted_at" })
   @IsDefined({ message: () => { throw "Parametro deleted_at requerido" } })
-  @Transform(({ value }) => validateDate(value), { toClassOnly: true })
+  @Transform(({ value }) => {
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!regex.test(value)) throw 'El formato el cual estas empleando es incorrecto, Revisa los campos de tipo fecha'
+  
+    const [year, month, day] = value.split("-");
+    const fecha = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+  
+    if (
+      fecha.getFullYear() === parseInt(year, 10) &&
+      fecha.getMonth() === parseInt(month, 10) - 1 &&
+      fecha.getDate() === parseInt(day, 10)
+    ) {
+      return value;
+    } else throw 'Ingresaste una fecha incorrecta, Revisa los campos de tipo fecha';
+
+  }, { toClassOnly: true })
   drat: Date
 
   constructor(user: Partial<Bodegas>) {
