@@ -6,8 +6,7 @@ const translateError = async (err) => {
         const translationResult = await translate(err, { from: 'en', to: 'es' });
         return translationResult.text;
       } catch (error) {
-        console.error('Translation error:', error);
-        return 'Error during translation';
+        console.error(error.message);
       }
 }
 
@@ -58,11 +57,6 @@ const warehousesPush = async (req, res) => {
         let insertWarehouse = await warehouses.insertOne(formatCorrect)
         res.status(201).send({ status: 201, message: "Se ha agregado una nueva bodega" })
     } catch (err) {
-       
-        translate("hello world!!", {from: "en", to: "es"}).then(res => {
-            console.log(res.text)
-        })
-       
         let errors = (err, p, q) => {
             let o = {
                 121: { status: 500, message: `Lo sentimos, ocurrió un error. Detalles: ${q} en el campo ${p}. Por favor, intenta de nuevo más tarde.` }
