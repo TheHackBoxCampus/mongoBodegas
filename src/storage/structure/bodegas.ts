@@ -3,9 +3,6 @@ import { IsDefined } from "class-validator"
 
 class Bodegas {
   @Expose({ name: "nombre" })
-  @Transform(({ value }) => {
-    return value
-  }, { toClassOnly: true })
   @IsDefined({ message: () => { throw "Parametro nombre requerido" } })
   nm: string
 
