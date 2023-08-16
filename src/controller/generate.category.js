@@ -4,10 +4,11 @@ import globalProperties from "../env/env.js"
 import jwt from "jsonwebtoken"
 import Usuarios from "../storage/structure/usuarios.js"
 import Bodegas from "../storage/structure/bodegas.js"
+import Inventarios from "../storage/structure/inventarios.js"
 
 const getClass = (cls) => {
     let classesAvailables = {
-        'usuarios': Usuarios, 'bodegas': Bodegas
+        'usuarios': Usuarios, 'bodegas': Bodegas, 'inventarios': Inventarios
     }  
 
     let isMatch = classesAvailables[cls];
