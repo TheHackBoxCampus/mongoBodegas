@@ -238,7 +238,6 @@ db.inventarios.insertOne({
         deleted_at:"2023-8-16"
 });
 
-
 use("bodegas");
 db.createCollection("historiales",{
     capped: true,
@@ -261,38 +260,26 @@ db.createCollection("historiales",{
             },
             id_bodega_origen: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo id_bodega debe ser un número y estar comprendido entre 0 y 20"
             },
             id_bodega_destino: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo id_producto debe ser un número y estar comprendido entre 0 y 20"
             },
             id_inventario: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo id_producto debe ser un número y estar comprendido entre 0 y 20"
             },
             estado: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo cantidad debe ser un número y estar comprendido entre 0 y 20"
             },
             created_by: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo created_by debe ser un número y estar comprendido entre 0 y 20"
             },
             update_by: {
                 bsonType: "int",
-                minimum: 0,
-                maximum: 20,
                 description: "El campo update_by debe ser un número y estar comprendido entre 0 y 20"
             },
             created_at: {
